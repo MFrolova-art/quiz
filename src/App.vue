@@ -1,12 +1,14 @@
 <template>
   <div class="ctr">
-    <questions 
-      v-if="questionsAnswered < questions.length" 
-      :questions="questions"
-      :questionsAnswered="questionsAnswered"
-      @question-answered="questionAnswered"
-    />
-    <result v-else :results="results" :totalCorrect="totalCorrect" />
+    <transition name="fade" mode="out-in">
+      <questions 
+        v-if="questionsAnswered < questions.length" 
+        :questions="questions"
+        :questionsAnswered="questionsAnswered"
+        @question-answered="questionAnswered"
+      />
+      <result v-else :results="results" :totalCorrect="totalCorrect" />
+    </transition>
     
     <button 
       type="button" 
@@ -35,60 +37,60 @@ export default {
       totalCorrect: 0,
       questions: [
             {
-                q: 'What is 2 + 2?', 
+                q: 'What is the capital of Ukraine?', 
                 answers: [
                     {
-                        text: '4',
+                        text: 'Kyiv',
                         is_correct: true
                     },
                     {
-                        text: '3',
+                        text: 'Warsaw',
                         is_correct: false 
                     },
                     {
-                        text: 'Fish',
+                        text: 'Madrid',
                         is_correct: false 
                     },
                     {
-                        text: '5',
-                        is_correct: false 
-                    }
-                ] 
-            },
-            { 
-                q: 'How many letters are in the word "Banana"?', 
-                answers: [
-                    {
-                        text: '5',
-                        is_correct: false
-                    },
-                    {
-                        text: '7',
-                        is_correct: false 
-                    },
-                    {
-                        text: '6',
-                        is_correct: true 
-                    },
-                    {
-                        text: '12',
+                        text: 'Detroit',
                         is_correct: false 
                     }
                 ] 
             },
             { 
-                q: 'Find the missing letter: C_ke', 
+                q: 'What`s the main river of Ukraine?', 
                 answers: [
                     {
-                        text: 'e',
+                        text: 'Danube',
                         is_correct: false
                     },
                     {
-                        text: 'a',
+                        text: 'Rhine',
+                        is_correct: false 
+                    },
+                    {
+                        text: 'Dnipro',
                         is_correct: true 
                     },
                     {
-                        text: 'i',
+                        text: 'Loire',
+                        is_correct: false 
+                    }
+                ] 
+            },
+            { 
+                q: 'What`s the most famous Ukrainian soup', 
+                answers: [
+                    {
+                        text: 'Żurek',
+                        is_correct: false
+                    },
+                    {
+                        text: 'Borscht',
+                        is_correct: true 
+                    },
+                    {
+                        text: 'Gaspacho',
                         is_correct: false 
                     }
                 ] 
